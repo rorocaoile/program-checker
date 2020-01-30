@@ -102,7 +102,7 @@ int main()
 	
 	for(int m=2; m<fileCount; m++){
 		for(int n=2; n<fileCount; n++){
-			std::cout << std::fixed << std::setprecision(2) << matrix[m][n];
+			std::cout << std::fixed << std::setprecision(1) << matrix[m][n];
 			cout<<"  ";
 		}
 		cout<<'\n';
