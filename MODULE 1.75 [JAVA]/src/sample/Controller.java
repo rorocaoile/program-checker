@@ -14,7 +14,7 @@ public class Controller {
     public TextArea huhu;
 
     int filecounter = 0;    //this counts the number of files inside the folder
-    String printing = "";
+    String printing = "";   //this will help us print the matrix in the GUI
 
 
     String dirPath = "C:\\Users\\hp\\Desktop\\submitted";       //this is the directory of the folder
@@ -23,8 +23,6 @@ public class Controller {
     String[] dirfile = new String[100];                         //this takes in the file names and includes the directory
     float[][] matrix= new float[100][100];
 
-    DecimalFormat df = new DecimalFormat("###.##");
-    //System.out.println(df.format(PI));
 
     public void GetFiles(){
         //this function basically takes in the files and places it inside an array.
@@ -83,10 +81,8 @@ public class Controller {
                 int diffchecker = 0;
 
 
-
-
-
-              if(a>b){
+                /*
+              if(a>b){                                                                  //this checks which file has more lines
                   for(int counter=0;counter<a;counter++){
                       if(line1[counter].equals(line2[counter])){
                           continue;
@@ -114,22 +110,20 @@ public class Controller {
                   matrix[i][j] = percent;
               }
 
-
+              */
               /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                /*
+
                 if(a>b){                                    //this is when file1 has more lines than file2
                     for(int counter=0;counter<a;counter++){
-                        for(int counter2=0; counter<b;counter2++){
+                        for(int counter2=0; counter2<b;counter2++){
                             if(line1[counter].equals(line2[counter2])){
                                 checker++;
-                                break;
+                                //break;
                             }
-                            else{
-                                continue;
-                            }
+
                         }
                         if(checker==0){
-                            different++;
+                            diffchecker++;
                         }
                         checker=0;
                     }
@@ -142,21 +136,19 @@ public class Controller {
                 else{
                     for(int counter = 0; counter<b;counter++){
                         for(int counter2=0;counter2<a;counter2++){
-                            if(line2[counter]==line1[counter2]) {
+                            if(line2[counter].equals(line1[counter2])) {
                                 checker++;
-                                break;
+                               // break;
                             }
-                            else{
-                                continue;
-                            }
+
                         }
                         if(checker==0){
-                            different++;
+                            diffchecker++;
                         }
                         checker=0;
                     }
-                    float totalsame = totallines - different;
-                    percent=(totalsame/totallines);
+                    different = totallines - diffchecker;
+                    percent=(different/totallines);
                     matrix[i][j] = percent;
                 }
 
@@ -178,10 +170,10 @@ public class Controller {
                 //String numberstring = .toString(df.format(matrix[i][j]);
                 //printing = printing + df.format(matrix[i][j]+ " ");
 
-                String finalnumber = df.format(matrix[i][j]);
+                String finalnumber = String.format("%.2f",matrix[i][j]);
                 printing = printing + finalnumber + "  ";
                 System.out.print(finalnumber);
-                //System.out.print(df.format(matrix[i][j])+ " ");
+
 
 
             }
